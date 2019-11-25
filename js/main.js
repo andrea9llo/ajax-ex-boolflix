@@ -19,7 +19,7 @@ function generaFilm() {
     },
     success: function(data){
       var filmGene = data.results;
-      console.log(data.results);
+      console.log(filmGene);
 
 
 
@@ -53,15 +53,17 @@ function generaFilm() {
 $(document).ready(function() {
 
   $(".cerca").click(function(){
-    generaFilm();
+      // ripuliscol'html
     $(".contenitore-film").html("");
+    generaFilm();
   });
 
   // cerco il film con il tasto invio
   $(".ricerca").keyup(function(k){
     if (k.keyCode == "13") {
-      generaFilm();
+      // ripuliscol'html
       $(".contenitore-film").html("");
+      generaFilm();
     }
   });
 
