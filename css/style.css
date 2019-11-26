@@ -5,14 +5,14 @@
 }
 
 
-.contenitore-film{
+.contenitore-movie{
   display: flex;
   flex-wrap: wrap;
 }
 
 
 /* blocco template  */
-.film{
+.film,.serie{
   display: flex;
   justify-content: flex-start;
   align-items: center;
