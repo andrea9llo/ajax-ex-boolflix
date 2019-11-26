@@ -21,14 +21,14 @@
 
     </div>
 
-
+    
     <!-- blocco template -->
     <script id="entry-template" type="text/x-handlebars-template">
       <div class="film">
         <h2>Film</h2>
         <h4>{{title}}</h4>
         <p>{{original_title}}</p>
-        <span>{{original_language}}</span>
+        <span>{{{original_language}}}</span>
         <span class="star">{{{vote_average}}}</span>
       </div>
     </script>
@@ -37,7 +37,7 @@
         <h2>Serie Tv</h2>
         <h4>{{name}}</h4>
         <p>{{original_name}}</p>
-        <span>{{original_language}}</span>
+        <span>{{{original_language}}}</span>
         <span>{{{vote_average}}}</span>
       </div>
     </script>

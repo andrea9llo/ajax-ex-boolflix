@@ -37,7 +37,7 @@ function generaFilm() {
         var context = {
           title:filmGenerati.title,
           original_title:filmGenerati.original_title,
-          original_language:filmGenerati.original_language,
+          original_language:flagLanguage(filmGenerati),
           vote_average:generaStar(filmGenerati)
         } ;
         var html = template(context);
@@ -115,7 +115,7 @@ function generaSerie() {
         var context = {
           name:serieGene[i].name,
           original_name:serieGene[i].original_name,
-          original_language:serieGene[i].original_language,
+          original_language:flagLanguage(serieGene[i]),
           vote_average:generaStar(serieGene[i])
         };
         var html = template(context);
@@ -134,6 +134,26 @@ function generaSerie() {
   });
 
 };
+
+function flagLanguage(language) {
+  var flag;
+  if (language.original_language == "it") {
+    flag = '<img src="img/italia.gif" alt="">';
+  } else if (language.original_language == "en") {
+    flag = '<img src="img/inglese.jpg" alt="">';
+  } else if (language.original_language == "de") {
+    flag = '<img src="img/germania.png" alt="">';
+  } else if (language.original_language == "fr") {
+    flag = '<img src="img/francia.png" alt="">';
+  } else if (language.original_language == "ja") {
+    flag = '<img src="img/giappone.png" alt="">';
+  } else if (language.original_language == "es") {
+    flag = '<img src="img/spagna.png" alt="">';
+  } else {
+    flag = language.original_language;
+  }
+  return flag;
+}
 
 $(document).ready(function() {
 

@@ -10,6 +10,10 @@
   flex-wrap: wrap;
 }
 
+.contenitore-movie img{
+  width: 25px;
+}
+
 
 /* blocco template  */
 .film,.serie{
