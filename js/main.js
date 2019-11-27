@@ -37,8 +37,9 @@ function generaFilm() {
         var context = {
           title:filmGenerati.title,
           original_title:filmGenerati.original_title,
-          original_language:flagLanguage(filmGenerati),
-          vote_average:generaStar(filmGenerati)
+          original_language: filmGenerati.original_language,
+          vote_average:generaStar(filmGenerati),
+          flag: flagLanguage(filmGenerati.original_language)
         } ;
         var html = template(context);
         console.log(html);
@@ -115,8 +116,9 @@ function generaSerie() {
         var context = {
           name:serieGene[i].name,
           original_name:serieGene[i].original_name,
-          original_language:flagLanguage(serieGene[i]),
-          vote_average:generaStar(serieGene[i])
+          original_language:serieGene[i].original_language,
+          vote_average:generaStar(serieGene[i]),
+          flag:flagLanguage(serieGene[i].original_language)
         };
         var html = template(context);
         console.log(html);
@@ -136,23 +138,31 @@ function generaSerie() {
 };
 
 function flagLanguage(language) {
-  var flag;
-  if (language.original_language == "it") {
-    flag = '<img src="img/italia.gif" alt="">';
-  } else if (language.original_language == "en") {
-    flag = '<img src="img/inglese.jpg" alt="">';
-  } else if (language.original_language == "de") {
-    flag = '<img src="img/germania.png" alt="">';
-  } else if (language.original_language == "fr") {
-    flag = '<img src="img/francia.png" alt="">';
-  } else if (language.original_language == "ja") {
-    flag = '<img src="img/giappone.png" alt="">';
-  } else if (language.original_language == "es") {
-    flag = '<img src="img/spagna.png" alt="">';
-  } else {
-    flag = language.original_language;
+  // var flag;
+  // if (language.original_language == "it") {
+  //   flag = '<img src="img/italia.gif" alt="">';
+  // } else if (language.original_language == "en") {
+  //   flag = '<img src="img/inglese.jpg" alt="">';
+  // } else if (language.original_language == "de") {
+  //   flag = '<img src="img/germania.png" alt="">';
+  // } else if (language.original_language == "fr") {
+  //   flag = '<img src="img/francia.png" alt="">';
+  // } else if (language.original_language == "ja") {
+  //   flag = '<img src="img/giappone.png" alt="">';
+  // } else if (language.original_language == "es") {
+  //   flag = '<img src="img/spagna.png" alt="">';
+  // } else {
+  //   flag = language.original_language;
+  // }
+  // return flag;
+
+  // versione alternativa vista in classe
+  var arrayFlag = ["de","it","en","fr","ja","es"];
+
+  if (arrayFlag.includes(language)) {
+    return '<img src="img/' + language + '.png" alt="">'
   }
-  return flag;
+  return "";
 }
 
 $(document).ready(function() {

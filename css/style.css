@@ -25,3 +25,9 @@
   margin: 10px 20px;
   text-align: center;
 }
+
+.lingua{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
