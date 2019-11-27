@@ -39,7 +39,8 @@ function generaFilm() {
           original_title:filmGenerati.original_title,
           original_language: filmGenerati.original_language,
           vote_average:generaStar(filmGenerati),
-          flag: flagLanguage(filmGenerati.original_language)
+          flag: flagLanguage(filmGenerati.original_language),
+          poster: "https://image.tmdb.org/t/p/w185" + filmGenerati.poster_path
         } ;
         var html = template(context);
         console.log(html);
@@ -110,15 +111,16 @@ function generaSerie() {
 
       // ciclo l'array di oggetti
       for (var i = 0; i < serieGene.length; i++) {
-
+        var generaSerie = serieGene[i];
 
         //compilo con handlbars
         var context = {
-          name:serieGene[i].name,
-          original_name:serieGene[i].original_name,
-          original_language:serieGene[i].original_language,
-          vote_average:generaStar(serieGene[i]),
-          flag:flagLanguage(serieGene[i].original_language)
+          name:generaSerie.name,
+          original_name:generaSerie.original_name,
+          original_language:generaSerie.original_language,
+          vote_average:generaStar(generaSerie),
+          flag:flagLanguage(generaSerie.original_language),
+          poster:"https://image.tmdb.org/t/p/w185" + generaSerie.poster_path
         };
         var html = template(context);
         console.log(html);

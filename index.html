@@ -20,12 +20,13 @@
     <div class="contenitore-movie">
 
     </div>
-
+<img src="" alt="">
 
     <!-- blocco template -->
     <script id="entry-template" type="text/x-handlebars-template">
       <div class="film">
         <h2>Film</h2>
+        <img src="{{poster}}" alt="">
         <h4>{{title}}</h4>
         <p>{{original_title}}</p>
         <span class="lingua">{{original_language}} - {{{flag}}}</span>
@@ -35,6 +36,7 @@
     <script id="entry-templateDue" type="text/x-handlebars-template">
       <div class="serie">
         <h2>Serie Tv</h2>
+        <img src="{{poster}}" alt="">
         <h4>{{name}}</h4>
         <p>{{original_name}}</p>
         <span class="lingua">{{original_language}} - {{{flag}}}</span>
