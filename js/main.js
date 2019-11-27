@@ -17,37 +17,14 @@ function generaFilm() {
       query: ricercaMovie,
     },
     success: function(data){
-      var filmGene = data.results;
-      console.log(filmGene);
+      var filmGeneApi = data.results;
+      console.log(filmGeneApi);
       // per ultima cosa pulisco sempre l'input
       $(".ricerca").val("");
 
+      // richiamo la funzione handlbars
+      handlebarsCopy("movie", filmGeneApi);
 
-      // handlebars
-      var source   = $("#entry-template").html();
-      var template = Handlebars.compile(source);
-
-      // ciclo l'array di oggetti
-      for (var i = 0; i < filmGene.length; i++) {
-
-        var filmGenerati = filmGene[i];
-        console.log(filmGenerati);
-
-        //compilo con handlbars
-        var context = {
-          title:filmGenerati.title,
-          original_title:filmGenerati.original_title,
-          original_language: filmGenerati.original_language,
-          vote_average:generaStar(filmGenerati),
-          flag: flagLanguage(filmGenerati.original_language),
-          poster: "https://image.tmdb.org/t/p/w185" + filmGenerati.poster_path
-        } ;
-        var html = template(context);
-        console.log(html);
-        //farò un append per metterlo in pagina con jquery
-        $(".contenitore-movie").append(html);
-
-      };
     },
     error: function(error){
       alert("errore");
@@ -55,6 +32,50 @@ function generaFilm() {
 
   });
 
+};
+
+function handlebarsCopy(type, movieGene) {
+
+  // handlebars
+  var source   = $("#entry-template").html();
+  var template = Handlebars.compile(source);
+
+  // ciclo l'array di oggetti
+  for (var i = 0; i < movieGene.length; i++) {
+
+    var movieGenerati = movieGene[i];
+    console.log(movieGenerati);
+
+    // faccio una condizione per riconoscere i film dalle serie tv
+    // mi salvo le variabili che poi vado a sovrascrivere in caso in cui sia un film o serie
+    var title,original_title,info;
+    if (type == "movie") {
+      title = movieGenerati.title;
+      original_title = movieGenerati.original_title;
+      info = "Film";
+    } else {
+        title = movieGenerati.name;
+        original_title = movieGenerati.original_name;
+        info = "Serie TV";
+      };
+
+
+    //compilo con handlbars
+    var context = {
+      info: info,
+      title: title,
+      original_title: original_title,
+      original_language: movieGenerati.original_language,
+      vote_average: generaStar(movieGenerati),
+      flag: flagLanguage(movieGenerati.original_language),
+      poster: "https://image.tmdb.org/t/p/w185" + movieGenerati.poster_path
+    } ;
+    var html = template(context);
+    console.log(html);
+    //farò un append per metterlo in pagina con jquery
+    $(".contenitore-movie").append(html);
+
+  };
 };
 
 function generaStar(movie) {
@@ -84,9 +105,6 @@ function generaSerie() {
   // dati input
   var ricercaMovie = $(".ricerca").val().toLowerCase();
 
-
-
-
   $.ajax({
 
     url:"https://api.themoviedb.org/3/search/tv",
@@ -99,37 +117,13 @@ function generaSerie() {
       query: ricercaMovie,
     },
     success: function(data){
-      var serieGene = data.results;
-      console.log(serieGene);
+      var serieGeneApi = data.results;
+      console.log(serieGeneApi);
       // per ultima cosa pulisco sempre l'input
       $(".ricerca").val("");
 
-
-      // handlebars
-      var source   = $("#entry-templateDue").html();
-      var template = Handlebars.compile(source);
-
-      // ciclo l'array di oggetti
-      for (var i = 0; i < serieGene.length; i++) {
-        var generaSerie = serieGene[i];
-
-        //compilo con handlbars
-        var context = {
-          name:generaSerie.name,
-          original_name:generaSerie.original_name,
-          original_language:generaSerie.original_language,
-          vote_average:generaStar(generaSerie),
-          flag:flagLanguage(generaSerie.original_language),
-          poster:"https://image.tmdb.org/t/p/w185" + generaSerie.poster_path
-        };
-        var html = template(context);
-        console.log(html);
-        //farò un append per metterlo in pagina con jquery
-        $(".contenitore-movie").append(html);
-
-
-      };
-
+      // richiamo la funzione handlbars
+      handlebarsCopy("tv",serieGeneApi);
     },
     error: function(error){
       alert("errore");
