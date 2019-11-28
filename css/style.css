@@ -43,6 +43,7 @@ header{
 .contenitore-movie,.contenitore-serie{
   display: flex;
   flex-wrap: nowrap;
+  margin: 25px 40px;
 }
 
 .contenitore-movie span img,
@@ -52,34 +53,54 @@ header{
 
 
 /* blocco template  */
+
 .copertina{
-  margin-left: 20px;
+  margin-right: 20px;
   position: relative;
 }
-.film{
-  position: absolute;
-  left: 5px;
-  top: 52px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  flex-direction: column;
-  display: none;
-}
-.copertina:hover{
-  display: none;
-}
-.copertina:hover  .film{
+
+/* .copertina:hover .poster{
+  opacity: 0.1;
+} */
+.copertina:hover  .intrattenimento{
   display: block;
+  cursor: pointer;
+}
+.intrattenimento{
+  width: 342px;
+  height: 513px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 8px;
+  background-color: #000;
+  overflow-y: auto;
+  display: none;
+}
+ul{
+  list-style-type: none;
+}
+li{
+  color: white;
+  font-size: 19px;
+  font-weight: 600;
+  margin: 5px 0;
+}
+li>span{
+  font-size: 17px;
+  font-weight: normal;
 }
 .poster{
   width: 342px;
   height: 513px;
 }
-
-
-.lingua{
+#lingua{
   display: flex;
-  justify-content: center;
   align-items: center;
+}
+#lingua img{
+  height: 22px;
+}
+.fas,.far{
+  color: yellow;
 }

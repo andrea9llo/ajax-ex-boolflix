@@ -75,7 +75,8 @@ function handlebarsCopy(type, movieGene) {
       original_language: movieGenerati.original_language,
       vote_average: generaStar(movieGenerati),
       flag: flagLanguage(movieGenerati.original_language),
-      poster: poster
+      poster: poster,
+      overview:movieGenerati.overview
     } ;
     var html = template(context);
     console.log(html);

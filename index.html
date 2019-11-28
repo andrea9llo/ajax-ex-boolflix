@@ -39,13 +39,16 @@
     <!-- blocco template -->
     <script id="entry-template" type="text/x-handlebars-template">
       <div class="copertina">
-        <h2>{{info}}</h2>
         <img class="poster" src={{poster}} alt="">
-        <div class="film">
-          <h4>{{title}}</h4>
-          <p>{{original_title}}</p>
-          <span class="lingua">{{original_language}} - {{{flag}}}</span>
-          <span class="star">{{{vote_average}}}</span>
+        <div class="intrattenimento">
+          <ul>
+            <li>{{info}}</li>
+            <li>Titolo: <span>{{title}}</span></li>
+            <li>Titolo originale: <span>{{original_title}}</span></li>
+            <li>Lingua Originale: <span>{{original_language}} - {{{flag}}}</span></li>
+            <li>Voto: <span>{{{vote_average}}}</span></li>
+            <li>Overview: <span>{{overview}}</span></li>
+          </ul>
         </div>
 
       </div>
