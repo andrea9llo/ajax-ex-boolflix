@@ -4,27 +4,79 @@
   box-sizing: border-box;
 }
 
-
-.contenitore-movie{
-  display: flex;
-  flex-wrap: wrap;
+/* contenitore */
+.container{
+  width: 100%;
+  height: 100vh;
 }
 
-.contenitore-movie span img{
+/* header */
+header{
+  width: 100%;
+  height: 100px;
+  padding: 40px;
+  background-color: #000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo img{
+  width: 220px;
+}
+
+.ricerca{
+  height: 35px;
+  width: 205px;
+}
+.cerca{
+  height: 35px;
+  cursor: pointer;
+}
+
+/* section */
+#filmSerietv{
+  height: calc(100% - 100px);
+  background-color: #303030;
+  overflow: auto;
+}
+.contenitore-movie,.contenitore-serie{
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.contenitore-movie span img,
+.contenitore-serie span img{
   width: 25px;
 }
 
 
 /* blocco template  */
-.film,.serie{
+.copertina{
+  margin-left: 20px;
+  position: relative;
+}
+.film{
+  position: absolute;
+  left: 5px;
+  top: 52px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  padding: 20px;
-  margin: 10px 20px;
-  text-align: center;
+  display: none;
 }
+.copertina:hover{
+  display: none;
+}
+.copertina:hover  .film{
+  display: block;
+}
+.poster{
+  width: 342px;
+  height: 513px;
+}
+
 
 .lingua{
   display: flex;

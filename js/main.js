@@ -59,6 +59,13 @@ function handlebarsCopy(type, movieGene) {
         info = "Serie TV";
       };
 
+      // se non ci sono img di copertina aggiungo io un img
+      var poster;
+      if (movieGenerati.poster_path == null) {
+        poster = "https://files.slack.com/files-pri/T91QPE3BP-FR4RVAGEA/image.png"
+      } else {
+        poster = "https://image.tmdb.org/t/p/w342" + movieGenerati.poster_path;
+      }
 
     //compilo con handlbars
     var context = {
@@ -68,12 +75,18 @@ function handlebarsCopy(type, movieGene) {
       original_language: movieGenerati.original_language,
       vote_average: generaStar(movieGenerati),
       flag: flagLanguage(movieGenerati.original_language),
-      poster: "https://image.tmdb.org/t/p/w185" + movieGenerati.poster_path
+      poster: poster
     } ;
     var html = template(context);
     console.log(html);
     //farò un append per metterlo in pagina con jquery
-    $(".contenitore-movie").append(html);
+    // faccio la condizione per stampare i film in un div e le  serie in un altro
+
+    if (type == "movie") {
+      $(".contenitore-movie").append(html);
+    } else {
+      $(".contenitore-serie").append(html);
+    }
 
   };
 };
@@ -166,6 +179,7 @@ $(document).ready(function() {
   $(".cerca").click(function(){
       // ripuliscol'html
     $(".contenitore-movie").html("");
+    $(".contenitore-serie").html("");
     generaFilm();
     generaSerie();
   });
@@ -175,6 +189,7 @@ $(document).ready(function() {
     if (k.keyCode == "13") {
       // ripuliscol'html
       $(".contenitore-movie").html("");
+      $(".contenitore-serie").html("");
       generaFilm();
       generaSerie();
     }

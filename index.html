@@ -11,27 +11,45 @@
     <title>Boolflix Andrea Novello</title>
   </head>
   <body>
-    <div class="contenitore">
-      <input class="ricerca" type="text" name="" value="" placeholder="Cerca un Film">
-      <button class="cerca" type="button" name="button">click</button>
+    <div class="container">
+      <header>
+        <div class="logo">
+          <img src="img/logo.png" alt="logo Boolflix">
+        </div>
+        <div class="search">
+          <input class="ricerca" type="text" name="" value="" placeholder="Cerca Film/SerieTV">
+          <button class="cerca" type="button" name="button">cerca</button>
+        </div>
 
+      </header>
 
-    </div>
-    <div class="contenitore-movie">
+      <section id="filmSerietv">
+        <div class="contenitore-movie">
+
+        </div>
+        <div class="contenitore-serie">
+
+        </div>
+      </section>
+
 
     </div>
 
 
     <!-- blocco template -->
     <script id="entry-template" type="text/x-handlebars-template">
-      <div class="film">
+      <div class="copertina">
         <h2>{{info}}</h2>
-        <img src="{{poster}}" alt="">
-        <h4>{{title}}</h4>
-        <p>{{original_title}}</p>
-        <span class="lingua">{{original_language}} - {{{flag}}}</span>
-        <span class="star">{{{vote_average}}}</span>
+        <img class="poster" src={{poster}} alt="">
+        <div class="film">
+          <h4>{{title}}</h4>
+          <p>{{original_title}}</p>
+          <span class="lingua">{{original_language}} - {{{flag}}}</span>
+          <span class="star">{{{vote_average}}}</span>
+        </div>
+
       </div>
+
     </script>
 
     <script type="text/javascript" src="js/main.js"></script>
